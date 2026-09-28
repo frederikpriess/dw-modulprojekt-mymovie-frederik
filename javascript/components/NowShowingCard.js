@@ -1,0 +1,31 @@
+import { getImageUrl } from "../api/tmdb.js";
+import { formatRating } from "../utils/formatters.js";
+
+export class NowShowingCard {
+    constructor(movie) {
+        this.movie = movie
+    }
+
+    render() {
+        const link = document.createElement("a")
+        link.className = "now-card"
+        link.href = `detail.html?id=${this.movie.id}`
+
+        const poster = document.createElement("img")
+        poster.className = "now-card__poster"
+        poster.src = getImageUrl(this.movie.poster_path, "w342")
+        poster.alt = this.movie.title
+        poster.loading = "lazy"
+
+        const title = document.createElement("span")
+        title.className = "now-card__title"
+        title.textContent = this.movie.title
+
+        const rating = document.createElement("span")
+        rating.className = "now-card__rating"
+        rating.textContent = `★ ${formatRating(this.movie.vote_average)}`
+
+        link.append(poster, title, rating)
+        return link
+    }
+}

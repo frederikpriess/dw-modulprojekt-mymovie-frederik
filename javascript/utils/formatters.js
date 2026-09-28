@@ -5,5 +5,5 @@ export function formatRating(voteAverage) {
 export function formatRuntime(minutes) {
     const hours = Math.floor(minutes / 60)
     const remainder = minutes % 60
-    return `${hours}h ${remainder}m`
+    return `${hours}h ${remainder}min`
 }
