@@ -32,3 +32,10 @@ export async function fetchPopular() {
     const data = await fetchJson("/movie/popular")
     return data.results
 }
+
+export async function fetchGenres() {
+    const data = await fetchJson("/genre/movie/list")
+    return Object.fromEntries (
+        data.genres.map((genre) => [genre.id, genre.name])
+    )
+}

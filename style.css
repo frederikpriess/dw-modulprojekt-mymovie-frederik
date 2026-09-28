@@ -8,6 +8,8 @@
     --bg: #ffffff;
     --text: #000000;
     --star: #f5b800;
+    --tag-bg: #dde3ff;
+    --tag-text: #5a6bd8;
 }
 
 * {
@@ -54,4 +56,57 @@ body {
 
 .now-card__rating {
     font-size: 12px;
+}
+
+/* popular */
+.popular-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.popular-card {
+    display: flex;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.popilar-card__poster {
+    flex: 0 0 100px;
+    width: 100px;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.popilar-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.popilar-card__title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.popilar-card__rating {
+    font-size: 12px;
+}
+
+.popular-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    padding: 3px 10px;
+    border-radius: 10px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 10px;
+    text-transform: uppercase;
 }
