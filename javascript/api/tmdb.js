@@ -14,10 +14,21 @@ async function fetchJson(path) {
         throw new Error(`Request failed (status ${response.status}): ${path}`);
     }
     
-    return response.Json()
+    return response.json()
 }
 
 export async function fetchNowPlaying() {
     const data = await fetchJson("/movie/now_playing")
+    return data.results
+}
+
+const IMAGE_URL = "https://image.tmdb.org/t/p"
+
+export function getImageUrl(path, size = "w500") {
+    return `${IMAGE_URL}/${size}${path}`
+}
+
+export async function fetchPopular() {
+    const data = await fetchJson("/movie/popular")
     return data.results
 }
