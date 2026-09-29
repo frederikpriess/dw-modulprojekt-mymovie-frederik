@@ -39,3 +39,7 @@ export async function fetchGenres() {
         data.genres.map((genre) => [genre.id, genre.name])
     )
 }
+
+export async function fetchMovieDetails(id) {
+    return fetchJson(`/movie/${id}?append_to_response=credits,videos,release_dates`)
+}

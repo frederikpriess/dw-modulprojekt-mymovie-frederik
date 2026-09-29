@@ -7,3 +7,11 @@ export function formatRuntime(minutes) {
     const remainder = minutes % 60
     return `${hours}h ${remainder}min`
 }
+
+export function getUsCertification(release_dates) {
+    const us = release_dates.find((entry) => entry.iso_3166_1)
+    if (!us) return null
+
+    const withRating = us.release_dates.find((entry) => entry.certification)
+    return withRating ? withRating.certification : null
+}
