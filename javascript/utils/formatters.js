@@ -15,3 +15,11 @@ export function getUsCertification(release_dates) {
     const withRating = us.release_dates.find((entry) => entry.certification)
     return withRating ? withRating.certification : null
 }
+
+export function findTrailer(videos) {
+    const trailers = videos.filter((video) => video.type ==="Trailer" && video.site === "YouTube")
+    if (trailers.length === 0) return null
+
+    const official = trailers.find((video) => video.official)
+    return official ?? trailers[0]
+}

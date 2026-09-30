@@ -303,3 +303,19 @@ body {
 .cast-member__name {
     font-size: 11px;
 }
+
+.detail__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}

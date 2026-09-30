@@ -1,5 +1,7 @@
 import { getImageUrl } from "../api/tmdb.js";
-import { formatRating, formatRuntime, getUsCertification } from "../utils/formatters.js";
+import { formatRating, formatRuntime, getUsCertification, findTrailer } from "../utils/formatters.js";
+
+
 
 export class DetailView {
     constructor(movie) {
@@ -30,6 +32,12 @@ export class DetailView {
         back.setAttribute("aria-label", "Back to list")
 
         hero.append(backdrop, back)
+
+        const trailer = findTrailer(this.movie.videos.results)
+        if (trailer) {
+            hero.append(this.renderPlayButton(trailer, hero))
+        }
+
         return hero
     }
 
@@ -161,6 +169,30 @@ export class DetailView {
 
         member.append(photo, name)
         return member
+    }
+
+    renderPlayButton(trailer, hero) {
+        const button = document.createElement("button")
+        button.className = "detail__play"
+        button.setAttribute("aria-label", "Play trailer")
+        button.innerHTML = `
+        <svg viewBox="0 0 24 24" width="24" height="24">
+        <path d="M8 5v14l11-7z" fill="white" />
+        </svg>
+    `
+
+    button.addEventListener("click", () => {
+        const frame = document.createElement("iframe")
+        frame.className = "detail__backdrop"
+        frame.src = `https://www.youtube.com/embed/${trailer.key}?autoplay=1`
+        frame.allow = "autoplay; encrypted-media"
+        frame.allowFullscreen = true
+
+        hero.queryselector(".detail__backdrop").replaceWith(frame)
+        button.remove()
+    })
+
+    return button
     }
 
 
