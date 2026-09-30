@@ -61,7 +61,7 @@ export class DetailView {
             genres.append(tag)
         });
 
-        card.append(titleRow, rating, genres, this.renderFacts(), this.renderDescription())
+        card.append(titleRow, rating, genres, this.renderFacts(), this.renderDescription(), this.renderCast())
         return card
 
     }
@@ -110,4 +110,59 @@ export class DetailView {
         section.append(heading, description)
         return section
     }
+
+    renderCast() {
+        const section = document.createElement("section")
+        section.className = "detail__cast-section"
+
+        const header = document.createElement("div")
+        header.className = "section-header"
+
+        const heading = document.createElement("h2")
+        heading.className = "detail__heading"
+        heading.textContent = "Cast"
+
+        const more = document.createElement("a")
+        more.className = "pill"
+        more.href = "#"
+        more.textContent = "See more"
+
+        header.append(heading, more)
+
+        const row = document.createElement("div")
+        row.className = "cast-row"
+
+        this.movie.credits.cast.slice(0, 8).forEach((person) => {
+            row.append(this.renderCastMember(person))
+        })
+
+        section.append(header, row)
+        return section
+    }
+
+    renderCastMember(person) {
+        const member = document.createElement("div")
+        member.className = "cast-member"
+
+        const photo = document.createElement("img")
+        photo.className = "cast-member__photo"
+        photo.alt = person.name
+        photo.loading = "lazy"
+
+        if (person.profile_path) {
+            photo.src = getImageUrl(person.profile_path, "w185")
+        } else {
+            photo.src = "https://placehold.co/185x185?text=No+Photo"
+        }
+
+        const name = document.createElement("span")
+        name.className = "cast-member__name"
+        name.textContent = person.name
+
+        member.append(photo, name)
+        return member
+    }
+
+
 }
+
