@@ -72,14 +72,6 @@ body {
     background: var(--toggle-track);
     cursor: pointer;
 }
-.theme-toggle--on {
-    background: var(--title);
-}
-
-.theme-toggle--on::after {
-    left: 18px;
-    background: var(--bg);
-}
 
 .theme-toggle::after {
     content: "";
@@ -90,6 +82,21 @@ body {
     height: 20px;
     border-radius: 50%;
     background: var(--toggle-knob);
+}
+
+.theme-toggle--on {
+    background: var(--title);
+}
+
+.theme-toggle--on::after {
+    left: 18px;
+    background: var(--bg);
+}
+
+.theme-toggle--on-hero {
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
 
 /* Section headings */
@@ -205,6 +212,10 @@ body {
 }
 
 /* Detail */
+.detail-page #root {
+    padding-top: 0;
+}
+
 .detail__hero {
     position: relative;
     margin: 0 -16px;

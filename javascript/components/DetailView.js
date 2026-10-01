@@ -1,11 +1,12 @@
 import { getImageUrl } from "../api/tmdb.js";
 import { formatRating, formatRuntime, getUsCertification, findTrailer } from "../utils/formatters.js";
-
+import { ThemeToggle } from "./ThemeToggle.js";
 
 
 export class DetailView {
-    constructor(movie) {
+    constructor(movie, theme) {
         this.movie = movie
+        this.theme = theme
     }
 
     render() {
@@ -31,7 +32,10 @@ export class DetailView {
         back.textContent = "←"
         back.setAttribute("aria-label", "Back to list")
 
-        hero.append(backdrop, back)
+        const toggle = new ThemeToggle(this.theme).render()
+        toggle.classList.add("theme-toggle--on-hero")
+
+        hero.append(backdrop, back, toggle)
 
         const trailer = findTrailer(this.movie.videos.results)
         if (trailer) {
@@ -104,7 +108,7 @@ export class DetailView {
         labelElement.className = "detail__fact-label"
         labelElement.textContent = label
 
-        fact.append(valueElement, labelElement)
+        fact.append(labelElement, valueElement)
         return fact
     }
 

@@ -14,7 +14,7 @@ const [nowPlaying, popular, genreMap] = await Promise.all([
 const theme = new ThemeManager
 const root = document.getElementById("root")
 
-const header = new Header(theme, () => theme.toggle())
+const header = new Header(theme)
 
 root.append(
     header.render(),
