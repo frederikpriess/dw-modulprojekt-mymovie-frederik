@@ -1,9 +1,15 @@
 import { getQueryParam } from "./javascript/utils/params.js";
 import { fetchMovieDetails } from "./javascript/api/tmdb.js";
 import { DetailView } from "./javascript/components/DetailView.js";
+import { Header } from "./javascript/components/header.js";
+import { ThemeManager } from "./javascript/utils/ThemeManager.js";
+
 
 const id = getQueryParam("id")
 const movie = await fetchMovieDetails(id)
+const theme = new ThemeManager()
 
 const root = document.getElementById("root")
-root.append(new DetailView(movie).render())
+const header = new Header(theme, () => theme.toggle())
+
+root.append(header.render(), new DetailView(movie).render())
