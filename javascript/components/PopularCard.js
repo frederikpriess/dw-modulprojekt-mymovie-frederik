@@ -27,7 +27,12 @@ export class PopularCard {
 
         const rating = document.createElement("span")
         rating.className = "popular-card__rating"
-        rating.textContent = `★ ${formatRating(this.movie.vote_average)}`
+        
+        const star = document.createElement("span")
+        star.className = "star"
+        star.textContent = "★"
+
+        rating.append(star, document.createTextNode(`${formatRating(this.movie.vote_average)}`))
 
         const tags = document.createElement("div")
         tags.className = "popular-card__tags"

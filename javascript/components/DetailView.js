@@ -56,7 +56,12 @@ export class DetailView {
 
         const rating = document.createElement("span")
         rating.className = "detail__rating"
-        rating.textContent = `★ ${formatRating(this.movie.vote_average)}`
+        
+        const star = document.createElement("span")
+        star.className = "star"
+        star.textContent = "★"
+
+        rating.append(star, document.createTextNode(`${formatRating(this.movie.vote_average)}`))
 
         const genres = document.createElement("div")
         genres.className = "detail__genres"

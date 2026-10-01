@@ -23,7 +23,12 @@ export class NowShowingCard {
 
         const rating = document.createElement("span")
         rating.className = "now-card__rating"
-        rating.textContent = `★ ${formatRating(this.movie.vote_average)}`
+
+        const star = document.createElement("span")
+        star.className = "star"
+        star.textContent = "★"
+
+        rating.append(star, document.createTextNode(`${formatRating(this.movie.vote_average)}`))
 
         link.append(poster, title, rating)
         return link

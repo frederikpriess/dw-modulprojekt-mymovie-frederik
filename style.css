@@ -347,3 +347,7 @@ body {
     color: var(--fact-label);
     font-size: 11px;
 }
+
+.star {
+    color: var(--star);
+}
