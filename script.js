@@ -4,6 +4,7 @@ import { PopularList } from "./javascript/components/PopularList.js";
 import { Header } from "./javascript/components/Header.js";
 import { SectionHeader } from "./javascript/components/SectionHeader.js";
 import { ThemeManager } from "./javascript/utils/ThemeManager.js";
+import { BottomNav } from "./javascript/components/BottomNav.js";
 
 const [nowPlaying, popular, genreMap] = await Promise.all([
     fetchNowPlaying(),
@@ -21,8 +22,8 @@ root.append(
     new SectionHeader("Now Showing").render(),
     new NowShowingList(nowPlaying).render(),
     new SectionHeader("Popular").render(),
-    new PopularList(popular, genreMap).render()
-
+    new PopularList(popular, genreMap).render(),
+    new BottomNav().render()
 )
 
 

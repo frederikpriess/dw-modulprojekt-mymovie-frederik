@@ -99,6 +99,17 @@ body {
     right: 16px;
 }
 
+.menu-button {
+    grid-column: 1;
+    justify-self: start;
+    display: flex;
+    background:none;
+    border: none;
+    padding: 0;
+    color: var(--text);
+    cursor: pointer;
+}
+
 /* Section headings */
 .section-header {
     display: flex;
