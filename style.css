@@ -407,3 +407,19 @@ body {
 .bottom-nav__item--active {
     padding: 4px;
 }
+
+/* Search */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar__input {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid var(--pill-border);
+    border-radius: 20px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+}
