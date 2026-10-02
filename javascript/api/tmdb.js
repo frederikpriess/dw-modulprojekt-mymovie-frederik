@@ -43,3 +43,8 @@ export async function fetchGenres() {
 export async function fetchMovieDetails(id) {
     return fetchJson(`/movie/${id}?append_to_response=credits,videos,release_dates`)
 }
+
+export async function searchMovies(query) {
+    const data = await fetchJson(`/search/movie?query=${encodeURIComponent(query)}`)
+    return data.results
+}
