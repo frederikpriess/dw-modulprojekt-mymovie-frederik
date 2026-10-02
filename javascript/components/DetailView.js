@@ -197,7 +197,7 @@ export class DetailView {
         frame.allow = "autoplay; encrypted-media"
         frame.allowFullscreen = true
 
-        hero.queryselector(".detail__backdrop").replaceWith(frame)
+        hero.querySelector(".detail__backdrop").replaceWith(frame)
         button.remove()
     })
 
