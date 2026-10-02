@@ -28,8 +28,8 @@ export function getImageUrl(path, size = "w500") {
     return `${IMAGE_URL}/${size}${path}`
 }
 
-export async function fetchPopular() {
-    const data = await fetchJson("/movie/popular")
+export async function fetchPopular(page = 1) {
+    const data = await fetchJson(`/movie/popular?page=${page}`)
     return data.results
 }
 
