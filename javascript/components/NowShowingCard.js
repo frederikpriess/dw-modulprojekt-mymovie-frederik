@@ -1,5 +1,5 @@
 import { getImageUrl } from "../api/tmdb.js";
-import { formatRating } from "../utils/formatters.js";
+import { formatRating, formatReleaseDate } from "../utils/formatters.js";
 
 export class NowShowingCard {
     constructor(movie) {
@@ -24,13 +24,17 @@ export class NowShowingCard {
         const rating = document.createElement("span")
         rating.className = "now-card__rating"
 
+        const releaseDate = document.createElement("span")
+        releaseDate.className = "now-card__date"
+        releaseDate.textContent = formatReleaseDate(this.movie.release_date)
+
         const star = document.createElement("span")
         star.className = "star"
         star.textContent = "★ "
 
         rating.append(star, document.createTextNode(`${formatRating(this.movie.vote_average)}`))
 
-        link.append(poster, title, rating)
+        link.append(poster, title, rating, releaseDate)
         return link
     }
 }

@@ -139,6 +139,24 @@ body {
     text-decoration: none;
 }
 
+/* release date */ 
+.popular-card__date {
+    font-size: 11px;
+    color: var(--fact-label);
+}
+/* i really should make these 1 class */
+.now-card__date {
+    font-size: 11px;
+    color: var(--fact-label);
+}
+
+.detail__date {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--description-text);
+}
+
 /* now showing */
 .movie-row {
     display: flex;

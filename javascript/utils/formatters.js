@@ -23,3 +23,14 @@ export function findTrailer(videos) {
     const official = trailers.find((video) => video.official)
     return official ?? trailers[0]
 }
+
+export function formatReleaseDate(dateString) {
+    if (!dateString) return "Unknown date"
+
+    const date = new Date(dateString)
+    return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    })
+}

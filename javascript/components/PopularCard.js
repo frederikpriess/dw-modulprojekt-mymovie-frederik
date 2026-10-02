@@ -1,5 +1,5 @@
 import { getImageUrl } from "../api/tmdb.js";
-import { formatRating } from "../utils/formatters.js";
+import { formatRating, formatReleaseDate } from "../utils/formatters.js";
 
 export class PopularCard {
     constructor(movie, genreMap) {
@@ -34,6 +34,10 @@ export class PopularCard {
 
         rating.append(star, document.createTextNode(`${formatRating(this.movie.vote_average)}`))
 
+        const releaseDate = document.createElement("span")
+        releaseDate.className = "popular-card__date"
+        releaseDate.textContent = formatReleaseDate(this.movie.release_date)
+
         const tags = document.createElement("div")
         tags.className = "popular-card__tags"
 
@@ -48,7 +52,7 @@ export class PopularCard {
                 tags.append(tag)
             });
 
-        info.append(title, rating, tags)
+        info.append(title, rating, releaseDate, tags)
         link.append(poster, info)
         return link
     }

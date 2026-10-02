@@ -1,5 +1,5 @@
 import { getImageUrl } from "../api/tmdb.js";
-import { formatRating, formatRuntime, getUsCertification, findTrailer } from "../utils/formatters.js";
+import { formatRating, formatRuntime, getUsCertification, findTrailer, formatReleaseDate } from "../utils/formatters.js";
 import { ThemeToggle } from "./ThemeToggle.js";
 
 
@@ -67,6 +67,10 @@ export class DetailView {
 
         rating.append(star, document.createTextNode(`${formatRating(this.movie.vote_average)}`))
 
+        const releaseDate = document.createElement("span")
+        releaseDate.className = "detail__date"
+        releaseDate.textContent = formatReleaseDate(this.movie.release_date)
+
         const genres = document.createElement("div")
         genres.className = "detail__genres"
 
@@ -78,7 +82,7 @@ export class DetailView {
             genres.append(tag)
         });
 
-        card.append(titleRow, rating, genres, this.renderFacts(), this.renderDescription(), this.renderCast())
+        card.append(titleRow, rating, releaseDate, genres, this.renderFacts(), this.renderDescription(), this.renderCast())
         return card
 
     }
