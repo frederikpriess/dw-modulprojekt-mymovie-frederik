@@ -12,5 +12,5 @@ const root = document.getElementById("root")
 
 root.append( 
     new DetailView(movie, theme).render(), 
-    new BottomNav().render
+    new BottomNav().render()
 )

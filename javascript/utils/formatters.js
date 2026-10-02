@@ -1,5 +1,5 @@
 export function formatRating(voteAverage) {
-    return `${voteAverage.toFixed(1)}/10IMDb`
+    return `${voteAverage.toFixed(1)}/10 IMDB`
 }
 
 export function formatRuntime(minutes) {
@@ -9,7 +9,7 @@ export function formatRuntime(minutes) {
 }
 
 export function getUsCertification(release_dates) {
-    const us = release_dates.find((entry) => entry.iso_3166_1)
+    const us = release_dates.find((entry) => entry.iso_3166_1 === "US")
     if (!us) return null
 
     const withRating = us.release_dates.find((entry) => entry.certification)

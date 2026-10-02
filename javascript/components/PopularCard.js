@@ -13,7 +13,7 @@ export class PopularCard {
         link.href = `detail.html?id=${this.movie.id}`
 
         const poster = document.createElement("img")
-        poster.className = "popilar-card__poster"
+        poster.className = "popular-card__poster"
         poster.src = getImageUrl(this.movie.poster_path, "w185")
         poster.alt = this.movie.title
         poster.loading = "lazy"
@@ -30,7 +30,7 @@ export class PopularCard {
         
         const star = document.createElement("span")
         star.className = "star"
-        star.textContent = "★"
+        star.textContent = "★ "
 
         rating.append(star, document.createTextNode(`${formatRating(this.movie.vote_average)}`))
 

@@ -26,7 +26,7 @@ export class NowShowingCard {
 
         const star = document.createElement("span")
         star.className = "star"
-        star.textContent = "★"
+        star.textContent = "★ "
 
         rating.append(star, document.createTextNode(`${formatRating(this.movie.vote_average)}`))
 
